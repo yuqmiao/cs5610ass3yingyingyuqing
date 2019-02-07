@@ -7,27 +7,33 @@ import SearchResult from "../components/SearchResult"
 
 
 class SearchBooks extends Component {
+    //create state
     state = {
         search: "",
-        results: [],
+        books: [],
         error: ""
     };
 
-
+    //function to take value of what enter in the search bar
     handleInputChange = event => {
         this.setState({ search: event.target.value })
     }
 
+    //function to control the submit button of the search form 
     handleFormSubmit = event => {
         event.preventDefault();
+        // once it clicks it connects to the google book api with the search value
         API.getGoogleSearchBooks(this.state.search)
             .then(res => {
                 if (res.data.items === "error") {
                     throw new Error(res.data.items);
                 }
                 else {
+                    // store response in a array
                     let results = res.data.items
+                    //map through the array 
                     results = results.map(result => {
+                        //store each book information in a new object 
                         let book = {
                             id: result.id,
                             title: result.volumeInfo.title,
@@ -38,7 +44,8 @@ class SearchBooks extends Component {
                         }
                         return book;
                     })
-                    this.setState({ results: results, error: "" })
+                    // reset the sate of the empty books array to the new arrays of objects with properties geting back from the response
+                    this.setState({ books: results, error: "" })
                 } 
             })
             .catch(err => this.setState({ error: err.items }));
@@ -48,7 +55,7 @@ class SearchBooks extends Component {
         return (
             <Container fluid>
                 <Jumbotron>
-                    <h1 className="text-white">Search some book</h1>
+                    <h1 className="text-white">Search Books with GoogleBook API</h1>
                 </Jumbotron>
                 <Container>
                     <Row>
@@ -62,7 +69,7 @@ class SearchBooks extends Component {
                 </Container>
                 <br></br>
                 <Container>
-                    <SearchResult results={this.state.results} />
+                    <SearchResult books={this.state.books} />
                 </Container>
             </Container>
         )
