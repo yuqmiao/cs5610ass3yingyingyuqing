@@ -11,7 +11,8 @@ class SearchBooks extends Component {
     state = {
         search: "",
         books: [],
-        error: ""
+        error: "",
+        message:""
     };
 
     //function to take value of what enter in the search bar
@@ -59,7 +60,7 @@ class SearchBooks extends Component {
         let savedBooks = this.state.books.filter(book => book.id === event.target.id)
         savedBooks = savedBooks[0];
         API.saveBook(savedBooks)
-            .then(console.log(savedBooks))
+            .then(this.setState({message: alert("Your book is saved")}))
             .catch(err => console.log(err))
     }
     render() {
