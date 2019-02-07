@@ -35,6 +35,7 @@ class SearchBooks extends Component {
                     results = results.map(result => {
                         //store each book information in a new object 
                         let book = {
+                            key: result.id,
                             id: result.id,
                             title: result.volumeInfo.title,
                             author: result.volumeInfo.authors.map(author => author),
@@ -46,11 +47,21 @@ class SearchBooks extends Component {
                     })
                     // reset the sate of the empty books array to the new arrays of objects with properties geting back from the response
                     this.setState({ books: results, error: "" })
-                } 
+                }
             })
             .catch(err => this.setState({ error: err.items }));
     }
 
+    handleSavedButton = event => {
+        // console.log(event)
+        event.preventDefault();
+        console.log(this.state.books)
+        let savedBooks = this.state.books.filter(book => book.id === event.target.id)
+        savedBooks = savedBooks[0];
+        API.saveBook(savedBooks)
+            .then(console.log(savedBooks))
+            .catch(err => console.log(err))
+    }
     render() {
         return (
             <Container fluid>
@@ -69,7 +80,7 @@ class SearchBooks extends Component {
                 </Container>
                 <br></br>
                 <Container>
-                    <SearchResult books={this.state.books} />
+                    <SearchResult books={this.state.books} handleSavedButton={this.handleSavedButton} />
                 </Container>
             </Container>
         )

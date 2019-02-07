@@ -2,14 +2,23 @@ import React from "react";
 import "./style.css"
 
 const SearchResult = props => {
-    return (
+    return (props.books.length === 0) ? (
         <div className="card">
             <div className="card-body player">
-                <div id="article">
+                <div className="article">
+                    <h3>Search Results</h3>
+                </div>
+            </div>
+        </div>
+    ):(
+        <div className="card">
+            <div className="card-body player">
+                <div className="article">
+                    <h3>Search Results</h3>
                     {props.books.map(book => {
                         return (
                             <li className="list-group-item">
-                                <div className="SearchResult row" id={book.title + "Card"}>
+                                <div className="SearchResult row" id={book.title + "Card"} key={book._id}>
                                     {/* col-3 show image of the book */}
                                     <div className="bookImage col-3">
                                         <img src={book.image} alt={book.title} />
@@ -28,7 +37,7 @@ const SearchResult = props => {
                                     </div>
                                 </div>
                                 <div className="row buttonDiv ">
-                                    <button className="saveBook btn btn-primary" id={book.id} onClick={() => book.saveBook()}>
+                                    <button className="saveBook btn btn-primary" id={book.id} onClick={(event) => props.handleSavedButton(event)}>
                                         Save Book
                                     </button>
                                     <a href={book.link} target="_blank">
@@ -43,7 +52,6 @@ const SearchResult = props => {
                 </div>
             </div>
         </div>
-
     )
 }
 export default SearchResult
