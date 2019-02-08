@@ -39,7 +39,7 @@ class SearchBooks extends Component {
                             key: result.id,
                             id: result.id,
                             title: result.volumeInfo.title,
-                            author: result.volumeInfo.authors.map(author => author),
+                            author: result.volumeInfo.authors,
                             description: result.volumeInfo.description,
                             image: result.volumeInfo.imageLinks.thumbnail,
                             link: result.volumeInfo.infoLink
