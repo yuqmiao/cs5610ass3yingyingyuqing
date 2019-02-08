@@ -12,7 +12,7 @@ class SearchBooks extends Component {
         search: "",
         books: [],
         error: "",
-        message:""
+        message: ""
     };
 
     //function to take value of what enter in the search bar
@@ -60,14 +60,14 @@ class SearchBooks extends Component {
         let savedBooks = this.state.books.filter(book => book.id === event.target.id)
         savedBooks = savedBooks[0];
         API.saveBook(savedBooks)
-            .then(this.setState({message: alert("Your book is saved")}))
+            .then(this.setState({ message: alert("Your book is saved") }))
             .catch(err => console.log(err))
     }
     render() {
         return (
             <Container fluid>
                 <Jumbotron>
-                    <h1 className="text-white">Search Books with GoogleBook API</h1>
+                    <h1 className="text-white">Find Your Favorite Books with GoogleBook API</h1>
                 </Jumbotron>
                 <Container>
                     <Row>
