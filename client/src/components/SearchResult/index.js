@@ -38,6 +38,7 @@ const SearchResult = props => {
                                             </Row>
                                         </Col>
                                     </Row>
+                                    <br></br>
                                     <Row className="buttonDiv ">
                                         <button className="saveBook btn btn-primary" id={book.id} onClick={(event) => props.handleSavedButton(event)}>
                                             Save Book

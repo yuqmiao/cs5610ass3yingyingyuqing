@@ -35,7 +35,7 @@ class SearchBooks extends Component {
                     //map through the array 
                     results = results.map(result => {
                         //store each book information in a new object 
-                        let book = {
+                        result = {
                             key: result.id,
                             id: result.id,
                             title: result.volumeInfo.title,
@@ -44,7 +44,7 @@ class SearchBooks extends Component {
                             image: result.volumeInfo.imageLinks.thumbnail,
                             link: result.volumeInfo.infoLink
                         }
-                        return book;
+                        return result;
                     })
                     // reset the sate of the empty books array to the new arrays of objects with properties geting back from the response
                     this.setState({ books: results, error: "" })
