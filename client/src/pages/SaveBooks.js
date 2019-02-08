@@ -26,13 +26,10 @@ class SaveBook extends Component {
     render() {
         return (
             <Container fluid>
-                <Jumbotron>
-                    <h1 className="text-white">Saved Books</h1>
-                </Jumbotron>
+                <Jumbotron />
                 <Container>
                     <SavedResult savedBooks={this.state.savedBooks} handleDeleteButton={this.handleDeleteButton} />
                 </Container>
-
             </Container>
         )
     }
