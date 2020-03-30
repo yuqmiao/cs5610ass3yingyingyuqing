@@ -7,7 +7,7 @@ const SearchResult = props => {
         <div className="card">
             <div className="card-body player">
                 <div className="article">
-                    <h3>Search Results</h3>
+                    <h3>Search Result</h3>
                 </div>
             </div>
         </div>
@@ -40,12 +40,15 @@ const SearchResult = props => {
                                     </Row>
                                     <br></br>
                                     <Row className="buttonDiv ">
-                                        <button className="saveBook btn btn-primary" id={book.id} onClick={(event) => props.handleSavedButton(event)}>
-                                            Save Book
-                                        </button>
                                         <a href={book.link} target="_blank">
                                             <button className="viewBook btn btn-success">
-                                                View Book
+                                                View details
+                                        </button>
+                                        <button className="saveBook btn btn-primary" id={book.id} onClick={(event) => props.handleSavedButton(event)}>
+                                            Add to to-read list
+                                        </button>
+                                        <button className="saveBook btn btn-primary" id={book.id} onClick={(event) => props.handleSavedButton(event)}>
+                                            Add to have-read list
                                         </button>
                                         </a>
                                     </Row>
