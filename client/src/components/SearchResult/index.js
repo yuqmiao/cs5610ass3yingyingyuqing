@@ -47,9 +47,6 @@ const SearchResult = props => {
                                         <button className="saveBook btn btn-primary" id={book.id} onClick={(event) => props.handleSavedButton(event)}>
                                             Add to to-read list
                                         </button>
-                                        <button className="saveBook btn btn-primary" id={book.id} onClick={(event) => props.handleSavedButton(event)}>
-                                            Add to have-read list
-                                        </button>
                                         </a>
                                     </Row>
                                 </li>

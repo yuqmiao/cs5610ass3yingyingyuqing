@@ -11,9 +11,6 @@ function Nav() {
                     <li className="nav-item" id="report">
                         <a className="nav-link" href="/saved"><button type="button" className="btn text-white">To-Read List</button></a>
                     </li>
-                    <li className="nav-item" id="report">
-                        <a className="nav-link" href="/saved"><button type="button" className="btn text-white">Have-Read List</button></a>
-                    </li>
                 </ul>
             </div>
         </nav>
